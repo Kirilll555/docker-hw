@@ -1,0 +1,14 @@
+services:
+    frontend:
+        image: kirilll123/frontend:latest
+        ports:
+            - "8080:80"
+    api:
+        image: containous/whoami
+    logger:
+        image: busybox
+        command: sh -c "while true; do echo \$(date) >> /data/log.txt; sleep 2; done"
+        volumes: 
+            - logger-data:/data
+volumes:
+    logger-data:
